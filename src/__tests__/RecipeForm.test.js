@@ -33,8 +33,6 @@ it('Button submits form', () => {
     };
 
     wrapper.find('[id="recipeSubmit"]').last().simulate("submit", e);
-
-    setImmediate( () => {
-        expect(wrapper.contains(<p id="respStatus">Your recipe was saved into the database!</p>)).toBeTruthy();
-      })
+    
+    expect(wrapper.contains(<p id="respStatus">Your recipe was saved into the database!</p>)).toBeTruthy();
 });

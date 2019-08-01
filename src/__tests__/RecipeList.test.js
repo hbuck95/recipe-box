@@ -13,3 +13,4 @@ it('RecipeList matches snapshot', () => {
     const wrapper = renderer.create(<RecipeList/>).toJSON();
     expect(wrapper).toMatchSnapshot();
 });
+
