@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 import RecipeForm from './RecipeForm';
 import RecipeList from './RecipeList';
+import RecipeView from './RecipeView';
 
 import {
     Collapse,
@@ -40,7 +41,7 @@ export default class NavigationBar extends Component {
         return (
             <Router>
                 <div id="navbar">
-                    <Navbar color="faded" light expand="md">
+                    <Navbar color="dark" light expand="md">
                         <NavbarBrand href="/">Recipe Box <FontAwesomeIcon icon="utensils" /></NavbarBrand>
                         <NavbarToggler onClick={this.toggle} />
                         <Collapse isOpen={this.state.isOpen} navbar>
@@ -61,6 +62,8 @@ export default class NavigationBar extends Component {
                     <Route exact path="/"/>
                     <Route path="/addrecipe" component={RecipeForm} />
                     <Route path="/viewrecipes" component={RecipeList} />
+                    <Route path="/viewrecipe/:id" component={RecipeView} something="test"/>
+                   {/* <Route path="/viewrecipe/:id" render={(props) => <PropsPage {...props} title={`Props through render`} />} /> */}
 
                 </div>
             </Router>

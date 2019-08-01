@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
-
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import NavigationBar from './components/NavigationBar';
 
-function App() {
-  return (
+export default class App extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: []
+    };
+  }
+
+
+  render() {
+    return (
       <div className="App">
-          <NavigationBar />
+        <NavigationBar />
       </div>
+    );
+  }
 
-  );
 }
-
-export default App;
