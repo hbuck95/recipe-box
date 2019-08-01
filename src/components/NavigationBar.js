@@ -47,7 +47,7 @@ export default class NavigationBar extends Component {
                         <Collapse isOpen={this.state.isOpen} navbar>
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
-                                    <Link to="/addrecipe">Add Recipe </Link>
+                                    <Link id="addrecipe" to="/addrecipe">Add Recipe </Link>
                                 </NavItem>
                                 <NavItem>
                                     <br/>
@@ -62,9 +62,7 @@ export default class NavigationBar extends Component {
                     <Route exact path="/"/>
                     <Route path="/addrecipe" component={RecipeForm} />
                     <Route path="/viewrecipes" component={RecipeList} />
-                    <Route path="/viewrecipe/:id" component={RecipeView} something="test"/>
-                   {/* <Route path="/viewrecipe/:id" render={(props) => <PropsPage {...props} title={`Props through render`} />} /> */}
-
+                    <Route path="/viewrecipe/:id" component={RecipeView}/>
                 </div>
             </Router>
         );

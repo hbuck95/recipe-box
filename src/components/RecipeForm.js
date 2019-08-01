@@ -16,18 +16,13 @@ export default class RecipeForm extends Component {
             recipeName: "",
             recipeDescription: "",
             recipeIngredients: "",
-            recipeImageURL: ""
+            recipeImageURL: "",
+            success: undefined
         };
 	}
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.setState({recipeName: e.target[0].value});
-        this.setState({recipeDescription: e.target[1].value});
-        this.setState({recipeIngredients: e.target[2].value});
-        this.setState({recipeImageURL: e.target[3].value});
-
-        //SendPost({username: this.state.username, email: this.state.email, content: this.state.content});
 
         const newRecipe = {
             name: e.target[0].value,
@@ -46,7 +41,8 @@ export default class RecipeForm extends Component {
           })
             .then(response => {
                 if(response.status === 200){
-                    window.alert("Your recipe has been added!");
+                    //window.alert("Your recipe has been added!");
+                    this.setState({success:true});
                 }
                 console.log(response.data);
                 document.getElementById("recipeForm").reset();
@@ -54,6 +50,7 @@ export default class RecipeForm extends Component {
             })
             .catch(err => {
                 console.log(err);
+                this.setState({success:false});
             });
     }
 
@@ -76,7 +73,7 @@ export default class RecipeForm extends Component {
                     <Col/>
                     <Col/>
                     <Col><h5>Recipe Name:</h5></Col>
-                    <Col><input type="text" placeholder="Pancakes"></input></Col>
+                    <Col><input id="recipeName" type="text" placeholder="Pancakes"></input></Col>
                     <Col/>
                     <Col/>
                     <Col/>
@@ -85,7 +82,7 @@ export default class RecipeForm extends Component {
                     <Col/>
                     <Col/>
                     <Col><h5>Description:</h5></Col>
-                    <Col><textarea style={{height:200, width:500}} placeholder="(e.g. This is a recipe for making pancakes)"></textarea></Col>
+                    <Col><textarea id="recipeDesc" style={{height:200, width:500}} placeholder="(e.g. This is a recipe for making pancakes)"></textarea></Col>
                     <Col/>
                     <Col/>
                     <Col/>
@@ -94,7 +91,7 @@ export default class RecipeForm extends Component {
                     <Col/>
                     <Col/>
                     <Col><h5>Ingredients:</h5></Col>
-                    <Col><textarea style={{height:200, width:500}} placeholder="(e.g. Eggs; Flour; Milk)"></textarea></Col>
+                    <Col><textarea id="recipeIngred" style={{height:200, width:500}} placeholder="(e.g. Eggs; Flour; Milk)"></textarea></Col>
                     <Col/>
                     <Col/>
                     <Col/>
@@ -103,7 +100,7 @@ export default class RecipeForm extends Component {
                     <Col/>
                     <Col/>
                     <Col><h5>Link to image:</h5></Col>
-                    <Col><input type="text" style={{width:500}} placeholder="https://i.imgur.com/Xl4kEpP.jpg"></input></Col>
+                    <Col><input id="recipeImage" type="text" style={{width:500}} placeholder="https://i.imgur.com/Xl4kEpP.jpg"></input></Col>
                     <Col/>
                     <Col/>
                     <Col/>
@@ -112,8 +109,17 @@ export default class RecipeForm extends Component {
                 <Row>
                     <Col/>
                     <Col/>
-                    <Col><Button color="success">Submit Recipe</Button></Col>
+                    <Col><Button id="recipeSubmit" color="success">Submit Recipe</Button></Col>
                     <Col/>
+                    <Col/>
+                    <Col/>
+                    <Col/>
+                </Row>
+                <br/>
+                <Row>
+                    <Col/>
+                    <Col/>
+                    <p id="respStatus">{this.state.success === undefined ? "" : this.state.success ? "Your recipe was saved into the database!" : "An error occurred whilst attempting to save your recipe. Please try again."}</p>
                     <Col/>
                     <Col/>
                     <Col/>
