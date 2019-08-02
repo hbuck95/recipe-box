@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Click "Create Recipe" button 1`] = `ShallowWrapper {}`;
+
+exports[`Click "Create Recipe" button 2`] = `ShallowWrapper {}`;
+
+exports[`Click 'Create Recipe' button 1`] = `ShallowWrapper {}`;
+
+exports[`Click 'Create Recipe' button 2`] = `ShallowWrapper {}`;
+
+exports[`Navigation bar matches snapshot 1`] = `ShallowWrapper {}`;
